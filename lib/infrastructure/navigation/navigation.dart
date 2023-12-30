@@ -31,5 +31,15 @@ class Nav {
       page: () => const HomeScreen(),
       binding: HomeControllerBinding(),
     ),
+    GetPage(
+      name: Routes.AUTH_LOGIN,
+      page: () => const AuthLoginScreen(),
+      binding: AuthLoginControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.AUTH_CHECK_AUTH,
+      page: () => const AuthCheckAuthScreen(),
+      binding: AuthCheckAuthControllerBinding(),
+    ),
   ];
 }
