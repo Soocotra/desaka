@@ -1,4 +1,6 @@
+import 'package:desaka/infrastructure/theme/color/color_schemes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 
@@ -16,9 +18,12 @@ class Main extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      initialRoute: initialRoute,
-      getPages: Nav.routes,
+    return ScreenUtilInit(
+      child: GetMaterialApp(
+        initialRoute: initialRoute,
+        theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme, fontFamily: "Poppins"),
+        getPages: Nav.routes,
+      ),
     );
   }
 }
