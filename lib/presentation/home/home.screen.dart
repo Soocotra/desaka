@@ -1,4 +1,3 @@
-import 'package:desaka/presentation/auth/login/widgets/WelcomeLogin.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -13,7 +12,7 @@ class HomeScreen extends GetView<HomeController> {
     return Scaffold(
         body: Column(
           children: [
-            OutlinedButton(onPressed: () => {controller.increment()}, child:Text("tes")
+            OutlinedButton(onPressed: () => {controller.increment()}, child:const Text("tes")
             )
           ],
         ));

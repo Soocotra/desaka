@@ -1,11 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 
-import '../../auth/login/controllers/auth_login.controller.dart';
 
 class CustomTextField extends StatefulWidget {
-  CustomTextField(
+  const CustomTextField(
       {super.key,
       required this.labelText,
       this.errorMessage,
@@ -13,7 +10,7 @@ class CustomTextField extends StatefulWidget {
       required this.validator,
       this.isPassword = false});
 
-  String? errorMessage;
+  final String? errorMessage;
   final String labelText;
   final TextEditingController controller;
   final String? Function(String?) validator;
@@ -28,6 +25,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   void initState() {
+    super.initState();
     _passwordVisible = true;
   }
 
