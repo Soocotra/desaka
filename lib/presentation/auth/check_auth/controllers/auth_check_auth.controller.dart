@@ -31,6 +31,7 @@ class AuthCheckAuthController extends GetxController
 
   @override
   void onClose() {
+    animationController?.dispose();
     super.onClose();
   }
 

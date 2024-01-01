@@ -6,4 +6,9 @@ class Strings {
   static const String TELL_TO_LOGIN =
       "Silahkan Masuk Untuk Melanjutkan Ke \nAplikasi.";
   static const String LOGIN_BUTTON_TEXT = "Masuk";
+  static const String ATTENDANCE_LABEL = 'Attendance';
+  static const String REMOTE_CHOICE = "Choose your remote mode";
+  static const String CHECK_IN = "Check In";
+  static const String CHECK_OUT = "Check Out";
+  static const String WORKING_HRS = "Working Hr's";
 }
