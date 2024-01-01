@@ -3,7 +3,6 @@
 import 'dart:async';
 
 import 'package:desaka/domain/core/constant/enum.dart';
-import 'package:desaka/infrastructure/navigation/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -55,10 +54,6 @@ class AttendanceController extends GetxController
     change(null, status: RxStatus.success());
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {

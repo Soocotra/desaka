@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 
-import '../../auth/login/controllers/auth_login.controller.dart';
 
+// ignore: must_be_immutable
 class CustomTextField extends StatefulWidget {
   CustomTextField(
       {super.key,
@@ -28,6 +26,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   void initState() {
+    super.initState();
     _passwordVisible = true;
   }
 

@@ -1,5 +1,4 @@
 import 'package:desaka/infrastructure/navigation/routes.dart';
-import 'package:desaka/presentation/home/home.screen.dart';
 import 'package:desaka/presentation/landing/widgets/custom_bottom_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

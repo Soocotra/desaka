@@ -1,7 +1,5 @@
 import 'package:desaka/infrastructure/navigation/bindings/controllers/controllers_bindings.dart';
 import 'package:desaka/infrastructure/navigation/routes.dart';
-import 'package:desaka/presentation/auth/login/auth_login.screen.dart';
-import 'package:desaka/presentation/home/home.screen.dart';
 import 'package:desaka/presentation/screens.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -18,20 +16,8 @@ class LandingController extends GetxController {
 
   get tabIndex => _tabIndex.value;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
 
   void changeTabIndex(int index) {
     _tabIndex.value = index;
@@ -42,7 +28,7 @@ class LandingController extends GetxController {
     if (settings.name == Routes.HOME) {
       return GetPageRoute(
         settings: settings,
-        page: () => HomeScreen(),
+        page: () => const HomeScreen(),
         binding: HomeControllerBinding(),
       );
     }
@@ -50,14 +36,14 @@ class LandingController extends GetxController {
     if (settings.name == Routes.AUTH_LOGIN) {
       return GetPageRoute(
         settings: settings,
-        page: () => AuthLoginScreen(),
+        page: () => const AuthLoginScreen(),
         binding: AuthLoginControllerBinding(),
       );
     }
     if (settings.name == Routes.ATTENDANCE) {
       return GetPageRoute(
         settings: settings,
-        page: () => AttendanceScreen(),
+        page: () => const AttendanceScreen(),
         binding: AttendanceControllerBinding(),
       );
     }

@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 class AuthCheckAuthController extends GetxController
     with GetSingleTickerProviderStateMixin {
-  //TODO: Implement AuthCheckAuthController
 
   final Rxn<AnimationController> _animationController =
       Rxn<AnimationController>();
@@ -15,7 +14,7 @@ class AuthCheckAuthController extends GetxController
 
   get breathe => _breathe.value;
 
-  var _isLogged = false.obs;
+  final _isLogged = false.obs;
 
   @override
   void onInit() {
@@ -24,10 +23,6 @@ class AuthCheckAuthController extends GetxController
     checkAuth();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {

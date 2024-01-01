@@ -7,7 +7,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class AuthLoginController extends GetxController {
-  //TODO: Implement AuthLoginController
   final loginFormKey = GlobalKey<FormState>();
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
@@ -15,20 +14,8 @@ class AuthLoginController extends GetxController {
 
   final count = 0.obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
 
   String? usernameValidator(String? value) {
     return ValidateUsername().execute(value ?? "");
@@ -43,7 +30,7 @@ class AuthLoginController extends GetxController {
     isLoading.value = true;
 
     // Simulate a 3-second delay
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
 
     bool isValidUser = user == 'tes' && password == '123';
 
