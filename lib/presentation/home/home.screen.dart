@@ -10,13 +10,15 @@ class HomeScreen extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Column(
-          children: [
-            OutlinedButton(onPressed: () => {controller.increment()}, child:Text("tes")
-            )
-          ],
-        ));
+    return SafeArea(
+      child: Scaffold(
+          body: Column(
+            children: [
+              OutlinedButton(onPressed: () => {controller.increment()}, child:Text("tes")
+              )
+            ],
+          )),
+    );
   }
 }
 

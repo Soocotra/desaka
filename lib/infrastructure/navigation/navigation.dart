@@ -42,9 +42,14 @@ class Nav {
       binding: AuthCheckAuthControllerBinding(),
     ),
     GetPage(
+      name: Routes.LANDING,
+      page: () => const LandingScreen(),
+      binding: LandingControllerBinding(),
+     ),
+    GetPage(
       name: Routes.ATTENDANCE,
       page: () => const AttendanceScreen(),
       binding: AttendanceControllerBinding(),
-    ),
+     ),
   ];
 }

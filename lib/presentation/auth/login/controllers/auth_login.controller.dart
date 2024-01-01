@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:desaka/domain/auth/usecases/validate_password.dart';
 import 'package:desaka/domain/auth/usecases/validate_username.dart';
+import 'package:desaka/infrastructure/navigation/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -59,6 +60,7 @@ class AuthLoginController extends GetxController {
       checkUser(usernameController.text, passwordController.text).then((auth) {
         if (auth) {
           isLoading.value = false;
+          Get.offNamed(Routes.LANDING);
           Get.snackbar('Login', 'Login successfully', snackPosition: SnackPosition.BOTTOM);
         } else {
           isLoading.value = false;
