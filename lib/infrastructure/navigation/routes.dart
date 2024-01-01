@@ -1,8 +1,7 @@
-// ignore_for_file: constant_identifier_names
-
 class Routes {
   static Future<String> get initialRoute async {
-    return AUTH_LOGIN;
+    // TODO: implement method
+    return AUTH_CHECK_AUTH;
   }
 
   static const AUTH_LOGIN = '/auth-login';

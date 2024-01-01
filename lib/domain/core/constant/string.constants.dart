@@ -1,5 +1,3 @@
-// ignore_for_file: constant_identifier_names
-
 class Strings {
   static const String WELCOME_LOGIN_LABEL = "Selamat Datang Di \nDESAKA !";
   static const String EMPTY_FIELD_ERROR = "Kolom Tidak Boleh Kosong";

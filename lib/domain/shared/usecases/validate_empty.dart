@@ -1,4 +1,5 @@
 
+import 'package:get/get.dart';
 
 import '../../core/constant/string.constants.dart';
 
@@ -7,6 +8,5 @@ class ValidateEmpty {
     if(value.isEmpty) {
       return Strings.EMPTY_FIELD_ERROR;
     }
-    return null;
   }
 }

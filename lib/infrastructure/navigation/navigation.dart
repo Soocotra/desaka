@@ -9,7 +9,7 @@ import 'routes.dart';
 
 class EnvironmentsBadge extends StatelessWidget {
   final Widget child;
-  const EnvironmentsBadge({super.key, required this.child});
+  EnvironmentsBadge({required this.child});
   @override
   Widget build(BuildContext context) {
     var env = ConfigEnvironments.getEnvironments()['env'];

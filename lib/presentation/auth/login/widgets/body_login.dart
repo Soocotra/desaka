@@ -1,5 +1,6 @@
-import 'package:desaka/presentation/shared/widgets/CustomButton.dart';
-import 'package:desaka/presentation/shared/widgets/CustomTextField.dart';
+import 'package:desaka/presentation/shared/widgets/custom_button.dart';
+import 'package:desaka/presentation/shared/widgets/custom_text_field.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
@@ -9,8 +10,6 @@ import '../../../../domain/core/constant/string.constants.dart';
 import '../controllers/auth_login.controller.dart';
 
 class BodyLogin extends GetView<AuthLoginController> {
-  const BodyLogin({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -19,9 +18,10 @@ class BodyLogin extends GetView<AuthLoginController> {
         child: Form(
           key: controller.loginFormKey,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
+              SizedBox(height: 32.h,),
               CustomTextField(
                   labelText: Strings.USERNAME_LABEL,
                   controller: controller.usernameController,

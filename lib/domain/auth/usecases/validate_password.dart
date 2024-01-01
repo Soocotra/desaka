@@ -1,6 +1,8 @@
 
 import 'package:desaka/domain/shared/usecases/validate_empty.dart';
+import 'package:get/get.dart';
 
+import '../../core/constant/string.constants.dart';
 
 class ValidatePassword {
 
@@ -10,7 +12,6 @@ class ValidatePassword {
     if(emptyResult != null){
       return emptyResult;
     }
-    return null;
   }
 
 }

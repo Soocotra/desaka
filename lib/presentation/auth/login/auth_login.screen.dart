@@ -1,6 +1,7 @@
-import 'package:desaka/presentation/auth/login/widgets/BodyLogin.dart';
-import 'package:desaka/presentation/auth/login/widgets/WelcomeLogin.dart';
+import 'package:desaka/presentation/auth/login/widgets/body_login.dart';
+import 'package:desaka/presentation/auth/login/widgets/welcome_login.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'controllers/auth_login.controller.dart';
@@ -12,10 +13,10 @@ class AuthLoginScreen extends GetView<AuthLoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
+          physics: BouncingScrollPhysics(),
       child: SizedBox(
         height: MediaQuery.of(context).size.height,
-        child: const Column(
+        child: Column(
           children: [
             WelcomeLogin(),
             BodyLogin(),
