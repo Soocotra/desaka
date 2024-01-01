@@ -2,6 +2,7 @@ import 'package:desaka/infrastructure/navigation/bindings/controllers/controller
 import 'package:desaka/infrastructure/navigation/routes.dart';
 import 'package:desaka/presentation/auth/login/auth_login.screen.dart';
 import 'package:desaka/presentation/home/home.screen.dart';
+import 'package:desaka/presentation/screens.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +10,7 @@ class LandingController extends GetxController {
   final pages = [
     Routes.HOME,
     Routes.AUTH_LOGIN,
-    Routes.HOME,
+    Routes.ATTENDANCE,
     Routes.AUTH_LOGIN
   ];
 
@@ -51,6 +52,13 @@ class LandingController extends GetxController {
         settings: settings,
         page: () => AuthLoginScreen(),
         binding: AuthLoginControllerBinding(),
+      );
+    }
+    if (settings.name == Routes.ATTENDANCE) {
+      return GetPageRoute(
+        settings: settings,
+        page: () => AttendanceScreen(),
+        binding: AttendanceControllerBinding(),
       );
     }
 
