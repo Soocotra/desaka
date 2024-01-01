@@ -1,3 +1,4 @@
+import 'package:desaka/domain/core/constant/string.constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,7 +15,7 @@ class AttendanceScreen extends GetView<AttendanceController> {
     return Scaffold(
         appBar: AppBar(
             title: Text(
-              'Attendance',
+              Strings.ATTENDANCE_LABEL,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: Theme.of(context).colorScheme.onPrimary,
                   fontWeight: FontWeight.bold),
@@ -73,7 +74,7 @@ class AttendanceScreen extends GetView<AttendanceController> {
                   height: 16.h,
                 ),
                 Text(
-                  "Choose your remote mode",
+                  Strings.REMOTE_CHOICE,
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall
@@ -161,7 +162,7 @@ class AttendanceScreen extends GetView<AttendanceController> {
                                 color: Theme.of(context).colorScheme.onPrimary,
                               ),
                               Text(
-                                "Check In",
+                                Strings.CHECK_IN,
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyMedium
@@ -187,15 +188,15 @@ class AttendanceScreen extends GetView<AttendanceController> {
                       hoursBuilder(context,
                           icon: Icons.access_time_outlined,
                           hours: '--:--',
-                          label: 'Check In'),
+                          label: Strings.CHECK_IN),
                       hoursBuilder(context,
                           icon: Icons.access_time_outlined,
                           hours: '--:--',
-                          label: 'Check Out'),
+                          label: Strings.CHECK_OUT),
                       hoursBuilder(context,
                           icon: Icons.access_time_outlined,
                           hours: '--:--',
-                          label: "Working Hr's")
+                          label: Strings.WORKING_HRS)
                     ],
                   ),
                 )

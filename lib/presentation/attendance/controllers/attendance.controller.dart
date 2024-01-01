@@ -81,7 +81,7 @@ class AttendanceController extends GetxController
   void checkIn() async {
     change(null, status: RxStatus.loading());
     timer?.cancel();
-    await Get.showSnackbar(GetSnackBar(
+    await Get.showSnackbar(const GetSnackBar(
       title: 'Absen Berhasil',
       message: 'sukses',
       duration: Duration(milliseconds: 2000),
