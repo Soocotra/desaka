@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:desaka/domain/core/constant/enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,11 @@ class AttendanceController extends GetxController
   final RxString date =
       DateFormat('EEEE, MMMM d, y').format(DateTime.now()).obs;
   final RxDouble longPressed = 0.0.obs;
+  final RxString checkOutTime = ''.obs;
+  final RxString checkInTime = ''.obs;
+  final RxString workingHrs = ''.obs;
+  final attStatus = AttendanceStatus.checkIn.obs;
+
   Timer? timer;
 
   final List<Tab> myTabs = <Tab>[
@@ -44,7 +50,7 @@ class AttendanceController extends GetxController
   void onInit() {
     super.onInit();
     tabController = TabController(length: 2, vsync: this);
-    ever(longPressed, (callback) => callback == 1 ? checkIn() : null);
+    ever(longPressed, (callback) => callback == 1 ? onCompleteHold() : null);
     change(null, status: RxStatus.success());
   }
 
@@ -55,6 +61,7 @@ class AttendanceController extends GetxController
 
   @override
   void onClose() {
+    tabController.dispose();
     super.onClose();
   }
 
@@ -73,20 +80,50 @@ class AttendanceController extends GetxController
     });
   }
 
-  void onReleaseButton() {
+  void onCancelHold() {
     timer?.cancel();
     longPressed.value = 0;
   }
 
-  void checkIn() async {
+  void onCompleteHold() async {
     change(null, status: RxStatus.loading());
     timer?.cancel();
+
+    attStatusListener();
     await Get.showSnackbar(const GetSnackBar(
       title: 'Absen Berhasil',
       message: 'sukses',
       duration: Duration(milliseconds: 2000),
     )).future;
+
     longPressed.value = 0;
     change(null, status: RxStatus.success());
+  }
+
+  void checkIn() =>
+      checkInTime.value = DateFormat('hh:mm a').format(DateTime.now());
+  void checkOut() =>
+      checkOutTime.value = DateFormat('hh:mm a').format(DateTime.now());
+
+  void attStatusListener() {
+    if (attStatus.value == AttendanceStatus.checkIn) {
+      checkIn();
+      attStatus.value = AttendanceStatus.checkOut;
+    } else if (attStatus.value == AttendanceStatus.checkOut) {
+      checkOut();
+      attStatus.value = AttendanceStatus.complete;
+    } else if (attStatus.value == AttendanceStatus.complete) {
+      onCompleteAttendance();
+    }
+  }
+
+  void onCompleteAttendance() {
+    final startHour = DateFormat('hh:mm a').parse(checkInTime.value);
+    final endHour = DateFormat('hh:mm a').parse(checkOutTime.value);
+
+    final dif = endHour.difference(startHour);
+
+    workingHrs.value =
+        "${(dif.inMinutes / 60).toInt()} Hr's:${dif.inMinutes % 60} min";
   }
 }

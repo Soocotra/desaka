@@ -136,8 +136,7 @@ class AttendanceScreen extends GetView<AttendanceController> {
                       percent: controller.longPressed.value,
                       center: GestureDetector(
                         onLongPress: () => controller.holdButton(),
-                        onLongPressEnd: (details) =>
-                            controller.onReleaseButton(),
+                        onLongPressEnd: (details) => controller.onCancelHold(),
                         child: Container(
                           width: double.infinity,
                           height: double.infinity,
@@ -187,15 +186,21 @@ class AttendanceScreen extends GetView<AttendanceController> {
                     children: [
                       hoursBuilder(context,
                           icon: Icons.access_time_outlined,
-                          hours: '--:--',
+                          hours: controller.checkInTime.value == ''
+                              ? '--:--'
+                              : controller.checkInTime.value,
                           label: Strings.CHECK_IN),
                       hoursBuilder(context,
                           icon: Icons.access_time_outlined,
-                          hours: '--:--',
+                          hours: controller.checkOutTime.value == ''
+                              ? '--:--'
+                              : controller.checkOutTime.value,
                           label: Strings.CHECK_OUT),
                       hoursBuilder(context,
                           icon: Icons.access_time_outlined,
-                          hours: '--:--',
+                          hours: controller.workingHrs.value == ''
+                              ? '--:--'
+                              : controller.workingHrs.value,
                           label: Strings.WORKING_HRS)
                     ],
                   ),
