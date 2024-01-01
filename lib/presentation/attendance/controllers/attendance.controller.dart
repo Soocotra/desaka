@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:desaka/domain/core/constant/enum.dart';
+import 'package:desaka/infrastructure/navigation/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -86,18 +87,14 @@ class AttendanceController extends GetxController
   }
 
   void onCompleteHold() async {
-    change(null, status: RxStatus.loading());
     timer?.cancel();
-
+    longPressed.value = 0;
     attStatusListener();
-    await Get.showSnackbar(const GetSnackBar(
+    Get.showSnackbar(const GetSnackBar(
       title: 'Absen Berhasil',
       message: 'sukses',
       duration: Duration(milliseconds: 2000),
-    )).future;
-
-    longPressed.value = 0;
-    change(null, status: RxStatus.success());
+    ));
   }
 
   void checkIn() =>
@@ -111,10 +108,9 @@ class AttendanceController extends GetxController
       attStatus.value = AttendanceStatus.checkOut;
     } else if (attStatus.value == AttendanceStatus.checkOut) {
       checkOut();
-      attStatus.value = AttendanceStatus.complete;
-    } else if (attStatus.value == AttendanceStatus.complete) {
       onCompleteAttendance();
-    }
+      attStatus.value = AttendanceStatus.complete;
+    } else if (attStatus.value == AttendanceStatus.complete) {}
   }
 
   void onCompleteAttendance() {
@@ -123,7 +119,6 @@ class AttendanceController extends GetxController
 
     final dif = endHour.difference(startHour);
 
-    workingHrs.value =
-        "${(dif.inMinutes / 60).toInt()} Hr's:${dif.inMinutes % 60} min";
+    workingHrs.value = "${dif.inMinutes ~/ 60} Hr's:${dif.inMinutes % 60} min";
   }
 }

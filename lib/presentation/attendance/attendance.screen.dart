@@ -1,3 +1,5 @@
+import 'package:animated_icon/animated_icon.dart';
+import 'package:desaka/domain/core/constant/enum.dart';
 import 'package:desaka/domain/core/constant/string.constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -53,17 +55,16 @@ class AttendanceScreen extends GetView<AttendanceController> {
                           ),
                         )),
                         CircleAvatar(
-                          radius: 12.r,
+                          radius: 14.r,
                           backgroundColor:
                               Theme.of(context).colorScheme.primary,
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.refresh,
-                              color: Theme.of(context).colorScheme.onPrimary,
-                              size: 19.w,
-                            ),
-                            padding: EdgeInsets.zero,
+                          child: AnimateIcon(
+                            animateIcon: AnimateIcons.refresh,
+                            onTap: () {},
+                            iconType: IconType.animatedOnTap,
+                            height: 19.h,
+                            width: 19.h,
+                            color: Theme.of(context).colorScheme.onPrimary,
                           ),
                         ),
                       ],
@@ -135,7 +136,10 @@ class AttendanceScreen extends GetView<AttendanceController> {
                       progressColor: Theme.of(context).colorScheme.primary,
                       percent: controller.longPressed.value,
                       center: GestureDetector(
-                        onLongPress: () => controller.holdButton(),
+                        onLongPress: controller.attStatus.value ==
+                                AttendanceStatus.complete
+                            ? null
+                            : () => controller.holdButton(),
                         onLongPressEnd: (details) => controller.onCancelHold(),
                         child: Container(
                           width: double.infinity,
@@ -146,31 +150,71 @@ class AttendanceScreen extends GetView<AttendanceController> {
                             gradient: LinearGradient(
                               begin: Alignment.bottomCenter,
                               end: Alignment.topCenter,
-                              colors: [
-                                Theme.of(context).colorScheme.primary,
-                                Theme.of(context).colorScheme.inversePrimary,
-                              ],
+                              colors: controller.attStatus.value ==
+                                      AttendanceStatus.checkIn
+                                  ? [
+                                      Theme.of(context).colorScheme.primary,
+                                      Theme.of(context)
+                                          .colorScheme
+                                          .inversePrimary,
+                                    ]
+                                  : controller.attStatus.value ==
+                                          AttendanceStatus.checkOut
+                                      ? [
+                                          Theme.of(context).colorScheme.error,
+                                          Theme.of(context).colorScheme.onError,
+                                        ]
+                                      : [
+                                          Theme.of(context).colorScheme.primary,
+                                          Theme.of(context).colorScheme.primary,
+                                        ],
                             ),
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.touch_app_outlined,
-                                size: 55.w,
-                                color: Theme.of(context).colorScheme.onPrimary,
-                              ),
-                              Text(
-                                Strings.CHECK_IN,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium
-                                    ?.copyWith(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .onPrimary),
-                              )
-                            ],
+                            children: controller.attStatus.value ==
+                                    AttendanceStatus.complete
+                                ? [
+                                    Icon(
+                                      Icons.check,
+                                      size: 55.w,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onPrimary,
+                                    ),
+                                    Text(
+                                      'Done',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium
+                                          ?.copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onPrimary),
+                                    )
+                                  ]
+                                : [
+                                    Icon(
+                                      Icons.touch_app_outlined,
+                                      size: 55.w,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onPrimary,
+                                    ),
+                                    Text(
+                                      controller.attStatus.value ==
+                                              AttendanceStatus.checkIn
+                                          ? Strings.CHECK_IN
+                                          : Strings.CHECK_OUT,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium
+                                          ?.copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onPrimary),
+                                    )
+                                  ],
                           ),
                         ),
                       ),
