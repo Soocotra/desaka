@@ -1,4 +1,4 @@
-import 'package:desaka/presentation/auth/login/widgets/WelcomeLogin.dart';
+import 'package:desaka/presentation/auth/login/widgets/welcome_login.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
