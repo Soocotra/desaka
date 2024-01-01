@@ -1,5 +1,5 @@
-import 'package:desaka/presentation/shared/widgets/CustomButton.dart';
-import 'package:desaka/presentation/shared/widgets/CustomTextField.dart';
+import 'package:desaka/presentation/shared/widgets/custom_button.dart';
+import 'package:desaka/presentation/shared/widgets/custom_text_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,9 +18,10 @@ class BodyLogin extends GetView<AuthLoginController> {
         child: Form(
           key: controller.loginFormKey,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
+              SizedBox(height: 32.h,),
               CustomTextField(
                   labelText: Strings.USERNAME_LABEL,
                   controller: controller.usernameController,

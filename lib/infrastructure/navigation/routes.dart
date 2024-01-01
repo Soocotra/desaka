@@ -1,7 +1,7 @@
 class Routes {
   static Future<String> get initialRoute async {
     // TODO: implement method
-    return AUTH_LOGIN;
+    return AUTH_CHECK_AUTH;
   }
 
   static const AUTH_LOGIN = '/auth-login';
