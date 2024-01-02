@@ -10,5 +10,5 @@ class Routes {
   static const AUTH_LOGIN = '/auth-login';
   static const HOME = '/home';
   static const LANDING = '/landing';
-  static const ACTIVITIES = '/activities';
+  static const ACTIVITIES = '/activities/:type';
 }
