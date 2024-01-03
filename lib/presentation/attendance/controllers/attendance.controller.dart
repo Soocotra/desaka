@@ -50,10 +50,8 @@ class AttendanceController extends GetxController
   void onInit() {
     super.onInit();
     tabController = TabController(length: 2, vsync: this);
-    ever(longPressed, (callback) => callback == 1 ? onCompleteHold() : null);
     change(null, status: RxStatus.success());
   }
-
 
   @override
   void onClose() {
@@ -73,6 +71,7 @@ class AttendanceController extends GetxController
       } else {
         longPressed.value = 1;
       }
+      print(longPressed.value);
     });
   }
 

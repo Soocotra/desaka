@@ -142,8 +142,17 @@ class AttendanceScreen extends GetView<AttendanceController> {
                 ),
                 Obx(() => CircularPercentIndicator(
                       radius: 76.r,
-                      progressColor: Theme.of(context).colorScheme.primary,
+                      progressColor: controller.attStatus.value ==
+                              AttendanceStatus.checkOut
+                          ? Theme.of(context).colorScheme.error
+                          : Theme.of(context).colorScheme.primary,
                       percent: controller.longPressed.value,
+                      animateFromLastPercent: true,
+                      animation: true,
+                      onAnimationEnd: () =>
+                          controller.longPressed.value < 99.1 / 100
+                              ? null
+                              : controller.onCompleteHold(),
                       center: GestureDetector(
                         onLongPress: controller.attStatus.value ==
                                 AttendanceStatus.complete

@@ -3,16 +3,17 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:jiffy/jiffy.dart';
 
+import '../../../domain/activities/activity.dart';
 import '../../../domain/activities/usecases/activity_type.dart';
 
-class ActivitiesController extends GetxController with StateMixin {
+class ActivitiesController extends GetxController with StateMixin<Activity> {
   final RxString activityType = ActivityScreenType.appointments.obs;
   final count = 0.obs;
   final RxString filterDate = DateFormat.yMMMM().format(DateTime.now()).obs;
+
   @override
   void onInit() {
     super.onInit();
-    change(null, status: RxStatus.success());
     getParams();
   }
 
@@ -39,9 +40,10 @@ class ActivitiesController extends GetxController with StateMixin {
 
   void openDatePicker() async {
     final pickedDate = await showDatePicker(
+        initialDatePickerMode: DatePickerMode.year,
         context: Get.context!,
         firstDate: DateTime.now(),
-        lastDate: DateTime(2100));
+        lastDate: DateTime(DateTime.now().year + 50));
     filterDate.value = DateFormat.yMMMM()
         .format(pickedDate ?? DateFormat.yMMMM().parse(filterDate.value));
   }

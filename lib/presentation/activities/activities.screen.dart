@@ -91,6 +91,7 @@ class ActivitiesScreen extends GetView<ActivitiesController> {
               ],
             ),
           ),
+          
         ],
       ),
     );
