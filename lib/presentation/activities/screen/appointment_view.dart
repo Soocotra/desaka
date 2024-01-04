@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../controllers/activities.controller.dart';
+import '../widgets/appointment_list.dart';
+import '../widgets/dynamic_calendar_icon.dart';
 
 class AppointmentView extends GetView<ActivitiesController> {
   const AppointmentView({Key? key}) : super(key: key);
@@ -34,6 +36,22 @@ class AppointmentView extends GetView<ActivitiesController> {
             ],
           ),
         ),
+        ListView.builder(
+          shrinkWrap: true,
+          itemCount: 6,
+          itemBuilder: (context, index) => GestureDetector(
+            onTap: () {},
+            child: AppointmentList(
+                title: 'This is a title',
+                leading: DynamicCalendarIcon(
+                  date: 18,
+                  month: 'Jul',
+                  height: 55.h,
+                  width: 50.h,
+                ),
+                subtitle: '00:00 AM, This is a description'),
+          ),
+        )
       ],
     );
   }

@@ -71,7 +71,6 @@ class AttendanceController extends GetxController
       } else {
         longPressed.value = 1;
       }
-      print(longPressed.value);
     });
   }
 
