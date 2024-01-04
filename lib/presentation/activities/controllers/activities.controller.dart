@@ -1,3 +1,4 @@
+import 'package:desaka/presentation/activities/screen/appointment_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -10,7 +11,7 @@ class ActivitiesController extends GetxController with StateMixin<Activity> {
   final RxString activityType = ActivityScreenType.appointments.obs;
   final count = 0.obs;
   final RxString filterDate = DateFormat.yMMMM().format(DateTime.now()).obs;
-
+  late final Widget body;
   @override
   void onInit() {
     super.onInit();
@@ -36,6 +37,7 @@ class ActivitiesController extends GetxController with StateMixin<Activity> {
   void getParams() {
     activityType.value =
         ActivityScreenType.getCurrentType(Get.parameters['type']);
+    body = ActivityScreenType.getBodyPage(activityType.value);
   }
 
   void openDatePicker() async {
