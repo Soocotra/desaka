@@ -32,8 +32,7 @@ class ActivityScreenType {
         bodyPage = const SupportTicketView();
         return ActivityScreenType.supportTickets;
       default:
-      
-        bodyPage = const AppointmentView();
+        bodyPage = const MeetingView();
         return ActivityScreenType.appointments;
     }
   }
