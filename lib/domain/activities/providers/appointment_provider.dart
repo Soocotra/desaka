@@ -24,4 +24,34 @@ class AppointmentProvider extends GetConnect {
       await post('appointment', appointment);
   Future<Response> deleteAppointment(int id) async =>
       await delete('appointment/$id');
+
+  List<Appointment> getDummy() {
+    return [
+      Appointment(
+          title: "This is Title",
+          description: "This is description",
+          startSchedule: DateTime.now(),
+          endSchedule: DateTime.now().add(const Duration(days: 1))),
+      Appointment(
+          title: "This is Title",
+          description: "This is description",
+          startSchedule: DateTime.now(),
+          endSchedule: DateTime.now().add(const Duration(days: 1))),
+      Appointment(
+          title: "This is Title",
+          description: "This is description",
+          startSchedule: DateTime.now(),
+          endSchedule: DateTime.now().add(const Duration(days: 1))),
+      Appointment(
+          title: "This is Title",
+          description: "This is description",
+          startSchedule: DateTime.now(),
+          endSchedule: DateTime.now().add(const Duration(days: 1))),
+      Appointment(
+          title: "This is Title",
+          description: "This is description",
+          startSchedule: DateTime.now(),
+          endSchedule: DateTime.now().add(const Duration(days: 1)))
+    ];
+  }
 }

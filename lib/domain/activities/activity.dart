@@ -4,14 +4,10 @@ import 'support_ticket_model.dart';
 import 'visit_model.dart';
 
 class Activity {
-  final Appointment? appointment;
-  final Meeting? meeting;
-  final SupportTicket? supportTicket;
-  final Visit? visit;
+  final List<Appointment>? appointment;
+  final List<Meeting>? meeting;
+  final List<SupportTicket>? supportTicket;
+  final List<Visit>? visit;
 
-  Activity(
-      {required this.appointment,
-      required this.meeting,
-      required this.supportTicket,
-      required this.visit});
+  Activity({this.appointment, this.meeting, this.supportTicket, this.visit});
 }

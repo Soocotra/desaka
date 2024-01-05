@@ -1,43 +1,55 @@
+import 'package:desaka/domain/activities/providers/appointment_provider.dart';
 import 'package:flutter/material.dart';
 
 import '../../../presentation/activities/screen/appointment_view.dart';
 import '../../../presentation/activities/screen/meeting_view.dart';
 import '../../../presentation/activities/screen/support_ticket_view.dart';
 import '../../../presentation/activities/screen/visit_view.dart';
+import '../activity.dart';
 
-abstract class ActivityScreenType {
+class ActivityScreenType {
   static const appointments = 'Appointments';
   static const meetings = 'Meetings';
   static const visit = 'Visits';
   static const supportTickets = 'Support Tickets';
+  Widget bodyPage = const AppointmentView();
+  String param = appointments;
 
-  static String getCurrentType(String? params) {
-    switch (params) {
+  set setParam(String setParam) => param = setParam;
+
+  String getCurrentType() {
+    switch (param) {
       case ActivityScreenType.appointments:
+        bodyPage = const AppointmentView();
         return ActivityScreenType.appointments;
       case ActivityScreenType.meetings:
+        bodyPage = const MeetingView();
         return ActivityScreenType.meetings;
       case ActivityScreenType.visit:
+        bodyPage = const VisitView();
         return ActivityScreenType.visit;
       case ActivityScreenType.supportTickets:
+        bodyPage = const SupportTicketView();
         return ActivityScreenType.supportTickets;
       default:
+      
+        bodyPage = const AppointmentView();
         return ActivityScreenType.appointments;
     }
   }
 
-  static Widget getBodyPage(String? params) {
-    switch (params) {
+  Activity getModel() {
+    switch (param) {
       case ActivityScreenType.appointments:
-        return const AppointmentView();
-      case ActivityScreenType.meetings:
-        return const MeetingView();
+        return Activity(appointment: AppointmentProvider().getDummy());
       case ActivityScreenType.visit:
-        return const VisitView();
+        return Activity(appointment: AppointmentProvider().getDummy());
+      case ActivityScreenType.meetings:
+        return Activity(appointment: AppointmentProvider().getDummy());
       case ActivityScreenType.supportTickets:
-        return const SupportTicketView();
+        return Activity(appointment: AppointmentProvider().getDummy());
       default:
-        return const AppointmentView();
+        return Activity(appointment: AppointmentProvider().getDummy());
     }
   }
 }

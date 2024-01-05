@@ -1,5 +1,6 @@
 // ignore_for_file: unnecessary_overrides
 
+import 'package:desaka/domain/activities/providers/appointment_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -13,6 +14,7 @@ class ActivitiesController extends GetxController with StateMixin<Activity> {
   final count = 0.obs;
   final RxString filterDate = DateFormat.yMMMM().format(DateTime.now()).obs;
   late final Widget body;
+  late Activity model;
   @override
   void onInit() {
     super.onInit();
@@ -36,9 +38,17 @@ class ActivitiesController extends GetxController with StateMixin<Activity> {
   void increment() => count.value++;
 
   void getParams() {
-    activityType.value =
-        ActivityScreenType.getCurrentType(Get.parameters['type']);
-    body = ActivityScreenType.getBodyPage(activityType.value);
+    final activityScreenType = ActivityScreenType();
+    activityScreenType.param = Get.parameters['type'] ?? '';
+
+    activityType.value = activityScreenType.getCurrentType();
+    body = activityScreenType.bodyPage;
+    model = activityScreenType.getModel();
+    change(model, status: RxStatus.success());
+  }
+
+  void getModel() {
+    model = Activity(appointment: AppointmentProvider().getDummy());
   }
 
   void openDatePicker() async {

@@ -1,4 +1,6 @@
-class SupportTicket {
+import 'activity.dart';
+
+class SupportTicket extends Activity{
   String? title;
   String? description;
   String? startSchedule;

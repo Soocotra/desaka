@@ -1,4 +1,6 @@
-class Visit {
+import 'activity.dart';
+
+class Visit extends Activity{
   String? title;
   String? description;
   String? startSchedule;
