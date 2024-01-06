@@ -1,4 +1,7 @@
-export 'package:desaka/presentation/activities/activities.screen.dart';
+export 'package:desaka/presentation/activity/appointment/appointment.screen.dart';
+export 'package:desaka/presentation/activity/meeting/meeting.screen.dart';
+export 'package:desaka/presentation/activity/support_ticket/support_ticket.screen.dart';
+export 'package:desaka/presentation/activity/visit/visit.screen.dart';
 export 'package:desaka/presentation/attendance/attendance.screen.dart';
 export 'package:desaka/presentation/auth/check_auth/auth_check_auth.screen.dart';
 export 'package:desaka/presentation/auth/login/auth_login.screen.dart';

@@ -22,4 +22,34 @@ class MeetingProvider extends GetConnect {
   Future<Response<Meeting>> postMeeting(Meeting meeting) async =>
       await post('meeting', meeting);
   Future<Response> deleteMeeting(int id) async => await delete('meeting/$id');
+
+  List<Meeting> getDummy() {
+    return [
+      Meeting(
+          title: "This is Title",
+          description: "This is description",
+          startSchedule: DateTime.now(),
+          endSchedule: DateTime.now().add(const Duration(days: 1))),
+      Meeting(
+          title: "This is Title",
+          description: "This is description",
+          startSchedule: DateTime.now(),
+          endSchedule: DateTime.now().add(const Duration(days: 1))),
+      Meeting(
+          title: "This is Title",
+          description: "This is description",
+          startSchedule: DateTime.now(),
+          endSchedule: DateTime.now().add(const Duration(days: 1))),
+      Meeting(
+          title: "This is Title",
+          description: "This is description",
+          startSchedule: DateTime.now(),
+          endSchedule: DateTime.now().add(const Duration(days: 1))),
+      Meeting(
+          title: "This is Title",
+          description: "This is description",
+          startSchedule: DateTime.now(),
+          endSchedule: DateTime.now().add(const Duration(days: 1)))
+    ];
+  }
 }

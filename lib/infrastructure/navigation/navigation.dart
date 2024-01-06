@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../config.dart';
+import '../../presentation/activity/appointment/appointment.screen.dart';
+import '../../presentation/activity/meeting/meeting.screen.dart';
+import '../../presentation/activity/support_ticket/support_ticket.screen.dart';
+import '../../presentation/activity/visit/visit.screen.dart';
 import '../../presentation/screens.dart';
 import 'bindings/controllers/controllers_bindings.dart';
 import 'routes.dart';
@@ -52,11 +56,6 @@ class Nav {
       binding: AttendanceControllerBinding(),
     ),
     GetPage(
-      name: Routes.ACTIVITIES,
-      page: () => const ActivitiesScreen(),
-      binding: ActivitiesControllerBinding(),
-    ),
-    GetPage(
       name: Routes.ADD_APPOINTMENT,
       page: () => const AddAppointmentScreen(),
       binding: AddAppointmentControllerBinding(),
@@ -75,6 +74,26 @@ class Nav {
       name: Routes.ADD_SUPPORT_TICKET,
       page: () => const AddSupportTicketScreen(),
       binding: AddSupportTicketControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.APPOINTMENT,
+      page: () => const AppointmentScreen(),
+      binding: AppointmentControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.SUPPORT_TICKET,
+      page: () => const SupportTicketScreen(),
+      binding: SupportTicketControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.MEETING,
+      page: () => const MeetingScreen(),
+      binding: MeetingControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.VISIT,
+      page: () => const VisitScreen(),
+      binding: VisitControllerBinding(),
     ),
   ];
 }

@@ -1,10 +1,13 @@
-export 'package:desaka/infrastructure/navigation/bindings/controllers/activities.controller.binding.dart'; 
 export 'package:desaka/infrastructure/navigation/bindings/controllers/add_appointment.controller.binding.dart'; 
 export 'package:desaka/infrastructure/navigation/bindings/controllers/add_meeting.controller.binding.dart'; 
 export 'package:desaka/infrastructure/navigation/bindings/controllers/add_support_ticket.controller.binding.dart'; 
 export 'package:desaka/infrastructure/navigation/bindings/controllers/add_visit.controller.binding.dart'; 
+export 'package:desaka/infrastructure/navigation/bindings/controllers/appointment.controller.binding.dart'; 
 export 'package:desaka/infrastructure/navigation/bindings/controllers/attendance.controller.binding.dart'; 
 export 'package:desaka/infrastructure/navigation/bindings/controllers/auth_check_auth.controller.binding.dart'; 
 export 'package:desaka/infrastructure/navigation/bindings/controllers/auth_login.controller.binding.dart'; 
 export 'package:desaka/infrastructure/navigation/bindings/controllers/home.controller.binding.dart'; 
 export 'package:desaka/infrastructure/navigation/bindings/controllers/landing.controller.binding.dart'; 
+export 'package:desaka/infrastructure/navigation/bindings/controllers/meeting.controller.binding.dart'; 
+export 'package:desaka/infrastructure/navigation/bindings/controllers/support_ticket.controller.binding.dart'; 
+export 'package:desaka/infrastructure/navigation/bindings/controllers/visit.controller.binding.dart'; 

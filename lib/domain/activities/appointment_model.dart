@@ -1,6 +1,4 @@
-import 'activity.dart';
-
-class Appointment extends Activity{
+class Appointment {
   String? title;
   String? description;
   DateTime? startSchedule;

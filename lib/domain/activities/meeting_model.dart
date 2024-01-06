@@ -1,10 +1,8 @@
-import 'activity.dart';
-
-class Meeting extends Activity{
+class Meeting{
   String? title;
   String? description;
-  String? startSchedule;
-  String? endSchedule;
+  DateTime? startSchedule;
+  DateTime? endSchedule;
   String? location;
   String? attachment;
 
