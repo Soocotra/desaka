@@ -2,7 +2,7 @@
 
 class Routes {
   static Future<String> get initialRoute async {
-    return AUTH_CHECK_AUTH;
+    return ACTIVITIES;
   }
 
   static const ATTENDANCE = '/attendance';
