@@ -56,5 +56,25 @@ class Nav {
       page: () => const ActivitiesScreen(),
       binding: ActivitiesControllerBinding(),
     ),
+    GetPage(
+      name: Routes.ADD_APPOINTMENT,
+      page: () => const AddAppointmentScreen(),
+      binding: AddAppointmentControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.ADD_MEETING,
+      page: () => const AddMeetingScreen(),
+      binding: AddMeetingControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.ADD_VISIT,
+      page: () => const AddVisitScreen(),
+      binding: AddVisitControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.ADD_SUPPORT_TICKET,
+      page: () => const AddSupportTicketScreen(),
+      binding: AddSupportTicketControllerBinding(),
+    ),
   ];
 }

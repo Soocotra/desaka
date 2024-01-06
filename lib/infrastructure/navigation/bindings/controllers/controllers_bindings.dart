@@ -1,4 +1,8 @@
 export 'package:desaka/infrastructure/navigation/bindings/controllers/activities.controller.binding.dart'; 
+export 'package:desaka/infrastructure/navigation/bindings/controllers/add_appointment.controller.binding.dart'; 
+export 'package:desaka/infrastructure/navigation/bindings/controllers/add_meeting.controller.binding.dart'; 
+export 'package:desaka/infrastructure/navigation/bindings/controllers/add_support_ticket.controller.binding.dart'; 
+export 'package:desaka/infrastructure/navigation/bindings/controllers/add_visit.controller.binding.dart'; 
 export 'package:desaka/infrastructure/navigation/bindings/controllers/attendance.controller.binding.dart'; 
 export 'package:desaka/infrastructure/navigation/bindings/controllers/auth_check_auth.controller.binding.dart'; 
 export 'package:desaka/infrastructure/navigation/bindings/controllers/auth_login.controller.binding.dart'; 
