@@ -9,6 +9,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:slide_digital_clock/slide_digital_clock.dart';
 
 import '../../infrastructure/navigation/routes.dart';
+import '../shared/widgets/custom_tab_bar.dart';
 import 'controllers/attendance.controller.dart';
 
 class AttendanceScreen extends GetView<AttendanceController> {
@@ -95,31 +96,10 @@ class AttendanceScreen extends GetView<AttendanceController> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 64.w),
-                  child: Container(
-                    height: 32.h,
-                    decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary,
-                        borderRadius: BorderRadius.circular(30.r)),
-                    child: TabBar(
-                      tabAlignment: TabAlignment.center,
-                      indicatorSize: TabBarIndicatorSize.tab,
-                      labelColor: Theme.of(context).colorScheme.primary,
-                      tabs: controller.myTabs,
-                      labelPadding: EdgeInsets.symmetric(
-                        horizontal: 16.w,
-                      ),
-                      padding: EdgeInsets.all(3.w),
-                      dividerColor: Colors.transparent,
-                      controller: controller.tabController,
-                      labelStyle: Theme.of(context).textTheme.labelMedium,
-                      unselectedLabelColor:
-                          Theme.of(context).colorScheme.onPrimary,
-                      indicator: BoxDecoration(
-                          color: Theme.of(context).colorScheme.onPrimary,
-                          borderRadius: BorderRadius.circular(30.r)),
-                      indicatorColor: Theme.of(context).colorScheme.onPrimary,
-                      onTap: (value) => controller.changeRemoteMode(value),
-                    ),
+                  child: CustomTabBar(
+                    tabs: controller.myTabs,
+                    onTap: (value) => controller.changeRemoteMode(value),
+                    tabController: controller.tabController,
                   ),
                 ),
                 SizedBox(
@@ -290,3 +270,5 @@ class AttendanceScreen extends GetView<AttendanceController> {
     ]);
   }
 }
+
+

@@ -37,26 +37,28 @@ class AppointmentView extends GetView<ActivitiesController> {
             ],
           ),
         ),
-        controller.obx((state) => ListView.builder(
-              shrinkWrap: true,
-              itemCount: state?.appointment?.length,
-              itemBuilder: (context, index) {
-                final appointment = state?.appointment?[index];
-                return GestureDetector(
-                  onTap: () {},
-                  child: AppointmentList(
-                      title: appointment?.title ?? '',
-                      leading: DynamicCalendarIcon(
-                        date: appointment?.startSchedule?.getDate() ?? 0,
-                        month: appointment?.startSchedule?.getMMM() ?? '',
-                        height: 55.h,
-                        width: 50.h,
-                      ),
-                      subtitle:
-                          '${appointment?.startSchedule?.getHoursFormat()}, ${appointment?.startSchedule?.getMMM()}'),
-                );
-              },
-            ))
+        Expanded(
+          child: controller.obx((state) => ListView.builder(
+                shrinkWrap: true,
+                itemCount: state?.appointment?.length,
+                itemBuilder: (context, index) {
+                  final appointment = state?.appointment?[index];
+                  return GestureDetector(
+                    onTap: () {},
+                    child: AppointmentList(
+                        title: appointment?.title ?? '',
+                        leading: DynamicCalendarIcon(
+                          date: appointment?.startSchedule?.getDate() ?? 0,
+                          month: appointment?.startSchedule?.getMMM() ?? '',
+                          height: 55.h,
+                          width: 50.h,
+                        ),
+                        subtitle:
+                            '${appointment?.startSchedule?.getHoursFormat()}, ${appointment?.startSchedule?.getMMM()}'),
+                  );
+                },
+              )),
+        )
       ],
     );
   }

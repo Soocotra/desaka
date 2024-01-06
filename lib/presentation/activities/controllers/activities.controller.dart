@@ -2,6 +2,7 @@
 
 import 'package:desaka/domain/activities/providers/appointment_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:jiffy/jiffy.dart';
@@ -9,15 +10,24 @@ import 'package:jiffy/jiffy.dart';
 import '../../../domain/activities/activity.dart';
 import '../../../domain/activities/usecases/activity_type.dart';
 
-class ActivitiesController extends GetxController with StateMixin<Activity> {
+class ActivitiesController extends GetxController
+    with StateMixin<Activity>, GetTickerProviderStateMixin {
   final RxString activityType = ActivityScreenType.appointments.obs;
-  final count = 0.obs;
+
+  // Common Use
   final RxString filterDate = DateFormat.yMMMM().format(DateTime.now()).obs;
   late final Widget body;
   late Activity model;
+  //
+
+  // Visit screen stuff
+  late final TabController tabController;
+  //
+
   @override
   void onInit() {
     super.onInit();
+    tabController = TabController(length: 2, vsync: this);
     getParams();
   }
 
@@ -34,8 +44,6 @@ class ActivitiesController extends GetxController with StateMixin<Activity> {
   void back() {
     Get.back();
   }
-
-  void increment() => count.value++;
 
   void getParams() {
     final activityScreenType = ActivityScreenType();
@@ -70,5 +78,32 @@ class ActivitiesController extends GetxController with StateMixin<Activity> {
   void nextMonth() {
     filterDate.value =
         Jiffy.parse(filterDate.value, pattern: 'yMMMM').add(months: 1).yMMMM;
+  }
+
+  List<Widget> visitTabs() {
+    return [
+      Tab(
+        child: Row(
+          children: [
+            const Icon(Icons.connecting_airports_outlined),
+            SizedBox(
+              width: 3.w,
+            ),
+            const Text('My Visit')
+          ],
+        ),
+      ),
+      Tab(
+        child: Row(
+          children: [
+            const Icon(Icons.history_toggle_off),
+            SizedBox(
+              width: 3.w,
+            ),
+            const Text('History'),
+          ],
+        ),
+      ),
+    ];
   }
 }
