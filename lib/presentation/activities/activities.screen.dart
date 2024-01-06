@@ -1,10 +1,8 @@
-import 'package:desaka/presentation/shared/widgets/custom_bottomsheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 
-import '../../domain/shared/usecases/bottom_sheet_type.dart';
 import '../shared/widgets/custom_button.dart';
 import 'controllers/activities.controller.dart';
 
