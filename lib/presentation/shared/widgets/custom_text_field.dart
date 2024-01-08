@@ -11,7 +11,9 @@ class CustomTextField extends StatefulWidget {
       required this.validator,
       this.isPassword = false,
       this.height,
-      this.borderRadius});
+      this.borderRadius,
+      this.maxLines,
+      this.enabled = true, this.onTap});
 
   String? errorMessage;
   final String labelText;
@@ -20,7 +22,9 @@ class CustomTextField extends StatefulWidget {
   final bool isPassword;
   final double? height;
   final double? borderRadius;
-
+  final int? maxLines;
+  final bool enabled;
+  final void Function()? onTap;
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
@@ -39,7 +43,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return SizedBox(
       height: widget.height,
       child: TextFormField(
+        onTap: widget.onTap,
+        enabled: widget.enabled,
         controller: widget.controller,
+        maxLines: widget.maxLines,
         decoration: InputDecoration(
             border: OutlineInputBorder(
                 borderRadius:
