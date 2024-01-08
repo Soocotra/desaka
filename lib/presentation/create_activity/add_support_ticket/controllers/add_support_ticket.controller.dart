@@ -1,9 +1,9 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'package:get/get.dart';
 
 class AddSupportTicketController extends GetxController {
-  //TODO: Implement AddSupportTicketController
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -19,5 +19,4 @@ class AddSupportTicketController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
 }

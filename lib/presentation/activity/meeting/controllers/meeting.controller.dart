@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'package:desaka/domain/activities/providers/meeting_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

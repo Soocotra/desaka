@@ -1,10 +1,11 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'dart:async';
 
 import 'package:desaka/domain/activities/usecases/date_conversion.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../domain/activities/usecases/validate_time_range.dart';
 
 class AddAppointmentController extends GetxController {
   final titleController = TextEditingController();
@@ -126,7 +127,5 @@ class AddAppointmentController extends GetxController {
         isEndTimePassed.value &&
         errMessageTime.value == '' &&
         (startController.value.text != '' && endController.value.text != '');
-    print(startController.value.text);
-    print(endController.value.text);
   }
 }
