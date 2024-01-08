@@ -7,7 +7,7 @@ import '../widgets/appointment_list.dart';
 import '../widgets/dynamic_calendar_icon.dart';
 import '../../../presentation/shared/widgets/custom_button.dart';
 import 'controllers/meeting.controller.dart';
-import '../../../domain/activities/usecases/date_conversion.dart';
+import '../../../domain/shared/usecases/date_conversion.dart';
 
 class MeetingScreen extends GetView<MeetingController> {
   const MeetingScreen({Key? key}) : super(key: key);

@@ -2,7 +2,7 @@
 
 class Routes {
   static Future<String> get initialRoute async {
-    return APPOINTMENT;
+    return MEETING;
   }
 
   static const ADD_APPOINTMENT = '/add-appointment';

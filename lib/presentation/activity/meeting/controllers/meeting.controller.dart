@@ -55,9 +55,7 @@ class MeetingController extends GetxController with StateMixin<List<Meeting>> {
   void goToCreateScreen() async {
     await Get.toNamed(Routes.ADD_MEETING)
         ?.then((value) => state?.add(value))
-        .catchError((err) {
-      Get.snackbar('error', err.toString());
-    });
+        .catchError((err) {});
     change(state, status: RxStatus.success());
   }
 }

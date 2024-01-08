@@ -56,9 +56,7 @@ class AppointmentController extends GetxController
   void goToCreateScreen() async {
     await Get.toNamed(Routes.ADD_APPOINTMENT)
         ?.then((value) => state?.add(value))
-        .catchError((err) {
-      Get.snackbar('error', err.toString());
-    });
+        .catchError((err) {});
     change(state, status: RxStatus.success());
   }
 }

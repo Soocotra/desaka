@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,8 +13,9 @@ class CustomTextField extends StatefulWidget {
       this.isPassword = false,
       this.height,
       this.borderRadius,
-      this.maxLines,
-      this.enabled = true, this.onTap});
+      this.maxLines = 1,
+      this.enabled = true,
+      this.onTap});
 
   String? errorMessage;
   final String labelText;
@@ -41,13 +43,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: widget.height,
+      height: widget.height ?? 70.h,
       child: TextFormField(
         onTap: widget.onTap,
         enabled: widget.enabled,
         controller: widget.controller,
         maxLines: widget.maxLines,
         decoration: InputDecoration(
+            helperText: "",
             border: OutlineInputBorder(
                 borderRadius:
                     BorderRadius.circular(widget.borderRadius ?? 8.r)),

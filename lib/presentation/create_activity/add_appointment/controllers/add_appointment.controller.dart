@@ -2,10 +2,14 @@
 
 import 'dart:async';
 
-import 'package:desaka/domain/activities/usecases/date_conversion.dart';
+import 'package:desaka/domain/shared/usecases/date_conversion.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../domain/activities/usecases/validate_description.dart';
+import '../../../../domain/activities/usecases/validate_location.dart';
+import '../../../../domain/activities/usecases/validate_title.dart';
+import '../../../../domain/core/constant/string.constants.dart';
 
 class AddAppointmentController extends GetxController {
   final titleController = TextEditingController();
@@ -20,13 +24,20 @@ class AddAppointmentController extends GetxController {
   final RxBool isStartTimePassed = false.obs;
   final RxBool isEndTimePassed = false.obs;
   final RxBool isTimeValidatePassed = false.obs;
+  final RxBool validate = false.obs;
+  final formKey = GlobalKey<FormState>();
+
+  late final Timer timer;
+
   @override
   void onInit() {
     super.onInit();
     _listenToEndSchedule();
     _listenToNowTime();
     _generateErrMessage();
-    Timer.periodic(const Duration(seconds: 1), (timer) {
+    ever(isTimeValidatePassed, (callback) => validating());
+
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       now.value = DateTime.now();
       final double combineNowTime = now.value.hour + (now.value.minute / 60.0);
       final double combineStartTime =
@@ -45,6 +56,7 @@ class AddAppointmentController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+    timer.cancel();
   }
 
   void pickStartDate() async {
@@ -93,7 +105,6 @@ class AddAppointmentController extends GetxController {
         endController.text = endSchedule.value.getHoursFormat();
         isEndTimePassed.value = true;
       }
-      timeRangeValidate();
     });
   }
 
@@ -104,21 +115,22 @@ class AddAppointmentController extends GetxController {
       final double combineStartTime =
           startSchedule.value.hour + (startSchedule.value.minute / 60.0);
       if (combineStartTime > combineNowTime) {
-        startController.value.text = startSchedule.value.getHoursFormat();
         isStartTimePassed.value = true;
       }
+      startController.value.text = startSchedule.value.getHoursFormat();
     });
   }
 
   void _generateErrMessage() {
     everAll([isStartTimePassed, isEndTimePassed], (callback) {
       if (!isStartTimePassed.value) {
-        errMessageTime.value = 'Harap isi jam mulai di depan jam saat ini';
+        errMessageTime.value = Strings.ERR_MESSAGE_START_DATETIME;
       } else if (!isEndTimePassed.value) {
-        errMessageTime.value = 'Harap isi jam berakhir di depan jam mulai';
+        errMessageTime.value = Strings.ERR_MESSAGE_END_DATETIME;
       } else if (isStartTimePassed.value && isEndTimePassed.value) {
         errMessageTime.value = '';
       }
+      timeRangeValidate();
     });
   }
 
@@ -128,4 +140,27 @@ class AddAppointmentController extends GetxController {
         errMessageTime.value == '' &&
         (startController.value.text != '' && endController.value.text != '');
   }
+
+  String? validateTitle(String? value) {
+    return ValidateTitle().execute(value ?? "");
+  }
+
+  String? validateDescription(String? value) {
+    return ValidateDescription().execute(value);
+  }
+
+  String? validateLocation(String? value) {
+    return ValidateLocation().execute(value);
+  }
+
+  void validating() {
+    if (formKey.currentState!.validate() && isTimeValidatePassed.value) {
+      validate.value = true;
+    } else {
+      validate.value = false;
+    }
+  }
+
+  void goToSubstitue() {}
+  void submitForm() {}
 }

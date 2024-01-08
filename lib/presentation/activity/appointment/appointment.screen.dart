@@ -3,11 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 
+import '../../../domain/core/constant/string.constants.dart';
 import '../widgets/appointment_list.dart';
 import '../widgets/dynamic_calendar_icon.dart';
 import '../../../presentation/shared/widgets/custom_button.dart';
 import 'controllers/appointment.controller.dart';
-import '../../../domain/activities/usecases/date_conversion.dart';
+import '../../../domain/shared/usecases/date_conversion.dart';
 
 class AppointmentScreen extends GetView<AppointmentController> {
   const AppointmentScreen({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class AppointmentScreen extends GetView<AppointmentController> {
         appBar: AppBar(
             backgroundColor: Theme.of(context).colorScheme.background,
             title: Text(
-              'Appointments',
+              Strings.APPOINTMENT,
               style: Theme.of(context)
                   .textTheme
                   .bodyLarge
@@ -84,7 +85,7 @@ class AppointmentScreen extends GetView<AppointmentController> {
           height: 40.h,
           margin: EdgeInsets.symmetric(horizontal: 16.w),
           child: CustomButton(
-              text: '+ Add Appointments',
+              text: Strings.ADD_APPOINTMENT_BUTTON_LABEL,
               onPressed: () => controller.goToCreateScreen()),
         ));
   }

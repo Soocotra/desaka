@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../domain/shared/usecases/bottom_sheet_type.dart';
 
-class CustomBottomSheet {
+class CustomBottomSheet<T> {
   final BottomSheetType type;
   final bool isScrollControlled;
   final bool persistent;
@@ -14,8 +14,8 @@ class CustomBottomSheet {
       this.isScrollControlled = false,
       this.persistent = true});
 
-  void openFormBottomSheet() async {
-    await Get.bottomSheet(
+  Future<T?> open() async {
+    return await Get.bottomSheet(
       Container(
         padding: EdgeInsets.only(
             top: MediaQueryData.fromView(View.of(Get.context!)).padding.top),
