@@ -12,7 +12,6 @@ import '../../../../domain/activities/usecases/validate_title.dart';
 import '../../../../domain/core/constant/string.constants.dart';
 
 class AddMeetingController extends GetxController {
-
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
   final locationController = TextEditingController();
@@ -78,20 +77,18 @@ class AddMeetingController extends GetxController {
   }
 
   void pickEndDate() async {
-    final pickedDate = await showDatePicker(
+    final pickedTime = await showTimePicker(
         context: Get.context!,
-        firstDate: startSchedule.value,
-        lastDate: DateTime(startSchedule.value.year + 100));
-    if (pickedDate != null) {
-      final pickedTime = await showTimePicker(
-          context: Get.context!,
-          initialTime: TimeOfDay(
-              hour: startSchedule.value.hour,
-              minute: startSchedule.value.minute));
-      if (pickedTime != null) {
-        endSchedule.value = DateTime(pickedDate.year, pickedDate.month,
-            pickedDate.day, pickedTime.hour, pickedTime.minute);
-      }
+        initialTime: TimeOfDay(
+            hour: startSchedule.value.hour,
+            minute: startSchedule.value.minute));
+    if (pickedTime != null) {
+      endSchedule.value = DateTime(
+          startSchedule.value.year,
+          startSchedule.value.month,
+          startSchedule.value.day,
+          pickedTime.hour,
+          pickedTime.minute);
     }
   }
 
@@ -164,5 +161,4 @@ class AddMeetingController extends GetxController {
 
   void goToSubstitue() {}
   void submitForm() {}
-
 }
