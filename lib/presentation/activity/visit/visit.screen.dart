@@ -65,7 +65,7 @@ class VisitScreen extends GetView<VisitController> {
           height: 40.h,
           margin: EdgeInsets.symmetric(horizontal: 16.w),
           child: CustomButton(
-              text: '+ Add Appointments',
+              text: '+ Add Visit',
               onPressed: () => controller.goToCreateScreen()),
         ));
   }
